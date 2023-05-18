@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Tournaments</title>
+    </h:head>
+    <h:body>
+        <div class="container-fluid mt-4">
+             <b:container fluid="true" >
+            
+        <f:view>
+            <h:form class ="mt-4">   
+            <b:dataTable value="#{organizercdi.fetchAllTournaments()}" var="item" >
+            <b:dataTableColumn value="#{item.tournamentId}" />
+            <b:dataTableColumn value="#{item.tournamentName}" />
+            <b:dataTableColumn value="#{item.startingDate}" />
+            <b:dataTableColumn value="#{item.organizerId.name}"  order="asc"/>
+            <b:dataTableColumn >
+            <h:commandButton class="btn btn-success" value="View Teams" action="#{organizercdi.fetchAllTournaments()}" />  
+            </b:dataTableColumn>
+            
+            </b:dataTable>       
+            </h:form>
+        </f:view>
+        </b:container>
+        </div>
+       
+        
+    </h:body>
+</html>
+
+

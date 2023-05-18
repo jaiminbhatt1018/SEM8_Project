@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    
+    </h:head>
+        <h:outputStylesheet name="css/styles.min.css" />
+    <h:body>
+  <!--  Body Wrapper -->
+  <h:form>
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div
+      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center w-100">
+        <div class="row justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-3">
+            <div class="card mb-0">
+              <div class="card-body">
+                
+                <p class="text-center">Your Social Campaigns</p>
+                
+                  <div class="mb-3">
+                    <label for="organizerId" class="form-label">Tournament ID</label>
+                       <h:inputText class="form-control" id="tournamentId" value="#{organizercdi.tournament.tournamentId}" title="TournamentId" required="true" requiredMessage="The TournamentId field is required."/>
+                  </div>
+                  <div class="mb-3">
+                    <label for="mobileNumber" class="form-label">Tournament Name</label>
+                    <h:inputText class="form-control" id="tournamentName" value="#{organizercdi.tournament.tournamentName}" title="TournamentName" required="true" requiredMessage="The TournamentName field is required."/>
+                    
+                  </div>
+                  <div class="mb-4">
+                    <label for="name" class="form-label">Date</label>
+                    <b:dateTimePicker format="DD/MM/YYYY"  placeholder="Choose Date" id="startingDate" value="#{organizercdi.tournament.startingDate}" required="true" requiredMessage="The StartingDate field is required."/>
+                   
+                  </div>
+                  <div class="mb-4">
+                    <label for="city" class="form-label">Organizer </label>
+                    <h:inputText class="form-control" id="organizer" value="#{organizercdi.organizerid}" title="organizer" required="true" requiredMessage="The organizer field is required." readonly="false"/>
+                        </div>  
+                    
+                <h:commandButton class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" value="Create" action="#{organizercdi.createTournament()}"></h:commandButton>
+                  
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body >
+        
+            <div class = "container-fluid m-5 " style="width: 90vw">
+                <h:form >
+                    <b:dataTable value="#{playercdi.displayPlayers()}" var="item" 
+               page-length="5"
+               page-length-menu="5,10,20" class="mt-5">
+    <f:facet name="header">
+      <tr>
+        <th>Playerid</th>
+        <th>Mobile No</th>
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Bowling Type</th>
+        <th>Batting Type</th>
+        <th>Batting Position</th>
+        <th>Age</th>
+        <th>Wicketkeeper</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </f:facet>
+    <b:dataTableColumn value="#{item.playerId}" />
+    <b:dataTableColumn value="#{item.mobileNumber}" />
+    <b:dataTableColumn value="#{item.name}" />
+    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Photo"/>
+                        </f:facet>
+                        <h:graphicImage value="#{playercdi.getImageDataUrl(item.photo)}" style="height: 100px; width: 100px;"/>
+                    </h:column>
+    <b:dataTableColumn value="#{item.bowlingType}" />
+    <b:dataTableColumn value="#{item.battingType}"/>
+    <b:dataTableColumn value="#{item.battingPosition}"/>
+    <b:dataTableColumn value="#{item.age}"/>
+    <b:dataTableColumn value="#{item.isWicketkeeper}"/>
+     <h:column>
+         <h:commandButton class="btn btn-primary" value="Edit" action="#{playercdi.loadupdate(item)}"/>                  
+     </h:column>
+    <h:column>
+        <h:commandButton class="btn btn-danger" value="Delete" action="#{playercdi.delete(item)}"/>                  
+     </h:column>
+  </b:dataTable>
+</h:form>
+            </div>
+
+
+
+    </h:body>
+</html>
+

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form enctype="multipart/form-data" id="myform">
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                   
+                    <h:outputLabel value="TeamName:" for="teamName" />
+                    <h:inputText id="teamName" value="#{organizercdi.team.teamName}" title="TeamName" required="true" requiredMessage="The TeamName field is required."/>
+                    <h:outputLabel value="TotalPurse:" for="totalPurse" />
+                    <h:inputText id="totalPurse" value="#{organizercdi.team.totalPurse}" title="TotalPurse" required="true" requiredMessage="The TotalPurse field is required."/>
+                    <h:outputLabel value="Team Logo:" for="photo" />
+                    <p:fileUpload value="#{organizercdi.teamLogo}" mode="simple" skinSimple="true" styleClass="mt-3 ui-button-filled block"/>
+                    <h:outputLabel value="OwnerId:" for="ownerId" />
+                    <h:selectOneMenu id="ownerId" value="#{organizercdi.selectedOwnerId}" required="true" requiredMessage="The OwnerId field is required.">
+                        
+                    <f:selectItems value="#{organizercdi.ownersList}" var="item" itemLabel="#{item.name}" itemValue="#{item.ownerId}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Tournamentid:" for="tournamentid" />
+                    <h:inputText class="form-control" id="tournamentid" value="#{organizercdi.tournamentid}" title="tournament" required="true" requiredMessage="The tournament field is required." readonly="false"/>
+                    <h:commandButton class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" value="Add Team" action="#{organizercdi.addNewTeam()}"></h:commandButton>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

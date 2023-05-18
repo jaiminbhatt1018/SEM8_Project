@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:outputStylesheet name="css/styles.min.css" />
+    <h:body>
+            
+<p:growl id="messages" showDetail="true"/>
+
+        
+
+<h:form enctype="multipart/form-data" id="myform" >
+          <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div
+      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center w-100">
+        <div class="row justify-content-center w-100">
+          <div class="col-md-12 col-lg-12 col-xxl-6">
+            <div class="card mb-0">
+              <div class="card-body">
+                
+                <p class="text-center"></p>
+                
+                  <div class="mb-3 row">
+                      <div class="col-xxl-6">
+                           <h:outputLabel value="User id : " for="playerId" />
+                          <p:inputText id="playerId" value="#{playercdi.player.playerId}" title="PlayerId" required="true" requiredMessage="The PlayerId field is required." class="form-control">
+                              <p:ajax event="blur" listener="#{playercdi.checkUsernameAvailability()}" update="availabilityMessage availability"  />
+                     </p:inputText>
+                          
+                          <p:outputPanel id="availabilityMessage">
+                   <h:outputText rendered="#{playercdi.msg}" id="outputText" value="Username not avaliable" style="color:black" />
+                     </p:outputPanel>
+                      </div>
+                      <div class="col-xxl-6">
+<h:outputLabel value="MobileNumber:" for="mobileNumber" />
+                    <h:inputText id="mobileNumber" value="#{playercdi.player.mobileNumber}" title="MobileNumber" required="true" requiredMessage="The MobileNumber field is required." class="form-control"/>
+
+                      </div>
+                    </div>
+                <div class="mb-3 row">
+                      <div class="col-xxl-6">
+                           <h:outputLabel value="Name:" for="name" />
+                    <h:inputText id="name" value="#{playercdi.player.name}" title="Name" required="true" requiredMessage="The Name field is required." class="form-control"/>
+                   
+                      </div>
+                      <div class="col-xxl-6">
+                           <h:outputLabel value="Password:" for="pass" />
+                           <h:inputText id="pass" value="#{playercdi.currentPassword}" title="Password" required="true" requiredMessage="The Password field is required." class="form-control"/>
+                   
+                      </div>
+                      <div class="col-xxl-6">
+<h:outputLabel value="Photo:" for="photo" />
+                    <p:fileUpload value="#{playercdi.file}" mode="simple" skinSimple="true" styleClass="mt-3 ui-button-filled block" />
+                   
+                      </div>
+                    </div>
+                <div class="mb-3 row">
+                      <div class="col-xxl-6">
+                          <h:outputLabel value="Batting Type" for="batting" />
+                    <h:selectOneMenu id="batting" value="#{playercdi.player.battingType}" title="batting" required="true" requiredMessage="The batting type field is required." class="form-select" >
+                        <f:selectItems value="#{playercdi.battingTypesList}" var="item" itemLabel="#{item.type}" itemValue="#{item.type}"/> 
+                    </h:selectOneMenu>
+                      </div>
+                      <div class="col-xxl-6">
+ <h:outputLabel value="Bowling Type:" for="BowlingType" />
+                    <h:selectOneMenu id="BowlingType" value="#{playercdi.player.bowlingType}" title="BowlingType" required="true" requiredMessage="The Bowling Type field is required." class="form-select">
+                        <f:selectItems value="#{playercdi.bowlingTypesList}" var="item" itemLabel="#{item.type}" itemValue="#{item.type}"/> 
+                    </h:selectOneMenu>
+                      </div>
+                    </div>
+                <div class="mb-3 row">
+                      <div class="col-xxl-6">
+                          <h:outputLabel value="BattingPosition:" for="battingPosition" />
+                    <h:selectOneMenu id="battingPosition" value="#{playercdi.player.battingPosition}" title="Batting Position" required="true" requiredMessage="The Position field is required." class="form-select" >
+                        <f:selectItems value="#{playercdi.battingPosition}"/> 
+                    </h:selectOneMenu>
+                      </div>
+                      <div class="col-xxl-6">
+  <h:outputLabel value="Age:" for="age" />
+                    <h:inputText id="age" value="#{playercdi.player.age}" title="Age" required="true" requiredMessage="The Age field is required." class="form-control"/>
+                   
+                      </div>
+                    </div>
+                <div class="mb-3 row">
+                      <div class="col-xxl-6">
+                          <h:outputLabel value="Wicketkeeper : " for="isWicketkeeper" />
+                    <h:selectOneRadio value="#{playercdi.player.isWicketkeeper}" id="isWicketkeeper" class="form-radio">
+                    <f:selectItem itemValue="true" itemLabel="Yes" /> 
+                    <f:selectItem itemValue="false" itemLabel="No" />
+                    </h:selectOneRadio>
+                      </div>
+                      <div class="col-xxl-6">
+<h:commandButton action="#{playercdi.insertPlayer()}" value="add"  disabled="#{playercdi.msg}" id="availability" class="btn btn-success"/>
+
+                      </div>
+                    </div>
+               
+                    
+                  <div class="d-flex align-items-center justify-content-center">
+                    <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
+                                   </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</h:form>
+    </h:body>
+</html>
+
